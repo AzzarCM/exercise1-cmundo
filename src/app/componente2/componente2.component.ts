@@ -12,6 +12,7 @@ export class Componente2Component implements OnInit, OnChanges {
 
   constructor() { }
   ngOnChanges(changes: SimpleChanges): void {
+    
     // lo hice asi porque cuando el input estaba vacio la operacion ""%9 === 0 retornaba true :(
     if (this.number2.toString() == "") {
       this.show = false;

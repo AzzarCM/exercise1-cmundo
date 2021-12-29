@@ -3,6 +3,6 @@
   <h1>Hi, this is the exercise 1</h1>
   <label class="mt-5">Please type a number</label>
   <input type="text" class="form-control" [value]="number"  [(ngModel)]="number">
-  <app-componente1 [number1]="number"></app-componente1>
-  <app-componente2 [number2]="number"></app-componente2>
+  <app-componente1 [number1]="number" (change)="showComponent($event)"></app-componente1>
+  <p *ngIf="show">{{number}}</p>
 </div>

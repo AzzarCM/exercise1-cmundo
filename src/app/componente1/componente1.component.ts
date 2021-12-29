@@ -1,4 +1,4 @@
-import { Component, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
+import { Component, Input, OnChanges, OnInit, SimpleChanges, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-componente1',
@@ -10,19 +10,16 @@ export class Componente1Component implements OnInit, OnChanges {
   @Input() number1:number = 0;
 
   show:boolean = false;
+
+  @Output() change: EventEmitter<boolean> = new EventEmitter<boolean>();
+
+  listenEvent(){
+    this.change.emit(this.number1%5==0 ? true : this.number1%9 == 0 ? true : false)
+  }
   
   constructor() { }
   ngOnChanges(changes: SimpleChanges): void {
-
-    // lo hice asi porque cuando el input estaba vacio la operacion ""%5 === 0 retornaba true :(
-    if (this.number1.toString() == "") {
-      this.show = false;
-    } else {
-      this.show = this.number1%5 === 0 ? true : false;
-    }
-
-    
-    console.log(this.show);
+    this.listenEvent()
   }
 
   ngOnInit(): void {

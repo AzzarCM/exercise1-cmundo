@@ -8,4 +8,11 @@ import { Component } from '@angular/core';
 export class AppComponent {
   title = 'Cristian Mundo App';
   number = 5;
+
+  show:boolean = false;
+
+  showComponent(value:any){
+    this.show = value;
+  }
+  
 }
